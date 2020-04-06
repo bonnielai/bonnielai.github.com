@@ -1,10 +1,5 @@
 module.exports = {
-  base: '/bonnielai.github.io/',
-  title: "bonnie's blog",
-  description: "This is bonnie's blog to write something about technology."
-}
-module.exports = {
-  base: '/bonnielai.github.io/',
+  base: '/',
   title: "bonnie's blog",
   description: "This is bonnie's blog to write something about technology.",
   themeConfig: {
