@@ -2,14 +2,83 @@
 home: true
 heroImage: /main.jpeg
 heroText: bonnie's blog
-tagline: 博客示例
-actionText: 快速上手 →
-actionLink: /
+tagline: Welcome to my blog
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
+- title: Hobby
+  details: Guitar, Drawing, Dance, Sport
+- title: Life
+  details: Cooking, Flower
+- title: Technology
+  details: Something interesting
 ---
+<ClientOnly>
+  <my-demo></my-demo>
+</ClientOnly>
+<script>
+console.log('here');
+  var caution=false
+  function setCookie(name,value,expires,path,domain,secure) 
+  {
+   var curCookie=name+"="+escape(value) +
+   ((expires)?";expires="+expires.toGMTString() : "") +
+   ((path)?"; path=" + path : "") +
+   ((domain)? "; domain=" + domain : "") +
+   ((secure)?";secure" : "")
+   if(!caution||(name + "=" + escape(value)).length <= 4000)
+   {
+   document.cookie = curCookie
+   }
+   else if(confirm("Cookie exceeds 4KB and will be cut!"))
+   {
+   document.cookie = curCookie
+   }
+  }
+  function getCookie(name) 
+  {
+   var prefix = name + "="
+   var cookieStartIndex = document.cookie.indexOf(prefix)
+   if (cookieStartIndex == -1)
+   {
+   return null
+   }    
+   var cookieEndIndex=document.cookie.indexOf(";",cookieStartIndex+prefix.length)
+   if(cookieEndIndex == -1)
+   {
+   cookieEndIndex = document.cookie.length
+   }
+   return unescape(document.cookie.substring(cookieStartIndex+prefix.length,cookieEndIndex))
+  }
+  function deleteCookie(name, path, domain) 
+  {
+   if(getCookie(name)) 
+   {
+   document.cookie = name + "=" + 
+   ((path) ? "; path=" + path : "") +
+   ((domain) ? "; domain=" + domain : "") +
+   "; expires=Thu, 01-Jan-70 00:00:01 GMT"
+   }
+  }
+  function fixDate(date) 
+  {
+   var base=new Date(0)
+   var skew=base.getTime()
+   if(skew>0)
+   {
+   date.setTime(date.getTime()-skew)
+   }    
+  }
+  var now=new Date()
+  fixDate(now)
+  now.setTime(now.getTime()+365 * 24 * 60 * 60 * 1000)
+  var visits = getCookie("counter")
+  if(!visits)
+  {
+   visits=1;
+  }  
+  else
+  {
+   visits=parseInt(visits)+1;
+  }  
+  setCookie("counter", visits, now);
+  console.log('访问人数：'+visits);
+</script>
